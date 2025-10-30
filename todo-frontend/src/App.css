@@ -1,0 +1,202 @@
+/* Xóa bỏ thiết lập cũ */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* 1. Bố cục App tổng thể */
+.kanban-app {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem; /* Thêm padding ngang */
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* 2. Thanh Nav trên cùng */
+.top-nav {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  gap: 1.5rem;
+}
+.nav-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+.nav-logo span {
+  background-color: #fa5252;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+}
+.nav-search { flex-grow: 1; }
+.nav-search input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  font-size: 0.9rem;
+}
+.nav-links a {
+  margin-left: 1.5rem;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* 3. Tiêu đề Bảng */
+.board-header {
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+.board-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #111;
+}
+
+/* 4. Bảng Kanban (Grid Layout) */
+.kanban-board {
+  display: grid;
+  /* === THAY ĐỔI: Chỉ tạo 2 cột === */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; /* Khoảng cách giữa các cột */
+  
+  /* Giới hạn chiều rộng tối đa để 2 cột không quá rộng */
+  max-width: 1000px; 
+}
+
+.kanban-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Khoảng cách giữa các item trong cột */
+  background-color: #f8f9fa; /* Màu nền cột */
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 50vh;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+}
+.column-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+.column-header span {
+  background-color: #e9ecef;
+  color: #555;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* 5. Style cho "Create New Card" (TodoInput) */
+.create-card-form {
+  background-color: #fff;
+  border: 1px dashed #ced4da; /* Viền đứt */
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.create-card-form textarea {
+  width: auto;
+  border: none;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  resize: vertical;
+  min-height: 50px;
+}
+.create-card-form textarea:focus {
+  outline: none;
+}
+.create-card-form button {
+  background-color: #7950f2; /* Màu tím */
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.create-card-form button:hover {
+  background-color: #6741d9;
+}
+
+/* 6. Danh sách Todo và Thẻ (Card) */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Đây là Thẻ (Card) - style cho <li> */
+.todo-list li {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #f1f3f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s;
+}
+.todo-list li:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Nhóm nội dung (checkbox + title) */
+.todo-list li .card-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.todo-list li span {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: #333;
+}
+.todo-list li.done span {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Nhóm nút bấm */
+.todo-list li .card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.todo-list li button {
+  font-size: 0.8rem;
+  background-color: transparent;
+  border: none;
+  color: #adb5bd;
+  cursor: pointer;
+}
+.todo-list li button:hover {
+  color: #d14a4a; /* Màu đỏ khi hover */
+}
+
+/* Ghi đè style cũ */
+.todo-form, .todo-form input[type='text'] {
+  background: none;
+  border: none;
+  padding: 0;
+}

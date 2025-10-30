@@ -1,33 +1,16 @@
 version: '3.8'
-
 services:
-  # Tên service là 'db' (bạn có thể đặt tên khác)
   db:
-    # Sử dụng image (bản mẫu) postgres phiên bản 15
     image: postgres:15
-    
-    # Tên của container (để dễ nhận biết)
     container_name: todo_postgres_db
-    
-    # Cấu hình các biến môi trường cho database
     environment:
-      POSTGRES_USER: ouruser               # Tên user để đăng nhập
-      POSTGRES_PASSWORD: 123456abc       # Mật khẩu cho user
-      POSTGRES_DB: todo_db                # Tên database sẽ được tự động tạo
-      
-    # Ánh xạ (map) cổng
-    # "5433:5432" nghĩa là:
-    # - Port 5433 ở máy thật (máy của bạn)
-    # - Sẽ trỏ vào port 5432 bên trong container (là port mặc định của Postgres)
-    # Bạn có thể dùng "5432:5432" nếu port 5432 trên máy bạn đang rảnh.
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: v3_password  # <-- THAY ĐỔI MẬT KHẨU
+      POSTGRES_DB: tododb
     ports:
-      - "5432:5432"
-      
-    # Lưu trữ dữ liệu (QUAN TRỌNG)
-    # Giúp data không bị mất mỗi khi bạn tắt/bật container
+      - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_v3:/var/lib/postgresql/data  # <-- THÊM _v2 VÀO ĐÂY
 
-# Định nghĩa volume 'postgres_data'
 volumes:
-  postgres_data:
+  postgres_data_v3:

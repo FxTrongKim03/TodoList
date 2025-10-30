@@ -1,0 +1,4 @@
+# Backend (Python)
+__pycache__/
+.venv/
+*.env
